@@ -1,0 +1,170 @@
+🚀 QUICK START - AES Web File Encryption
+
+═══════════════════════════════════════════════════════════════
+
+⏱️  KHỞI CHẠY TRONG 2 PHÚT
+
+═══════════════════════════════════════════════════════════════
+
+PHƯƠNG PHÁP 1: Node.js Direct (Dễ nhất)
+────────────────────────────────────────
+
+1️⃣  Cài đặt Node.js (nếu chưa có)
+   👉 https://nodejs.org/
+
+2️⃣  Mở Terminal trong folder 'web'
+   $ cd web
+
+3️⃣  Chạy startup script
+
+   # Linux/Mac
+   $ bash start.sh
+
+   # Windows
+   $ start.bat
+
+4️⃣  Mở Browser
+   👉 http://localhost:3000
+
+✅ XONG! Web interface sẵn sàng
+
+═══════════════════════════════════════════════════════════════
+
+PHƯƠNG PHÁP 2: Docker (Nếu có Docker)
+─────────────────────────────────────
+
+1️⃣  Đảm bảo Docker đã cài
+   $ docker --version
+
+2️⃣  Từ folder 'web', chạy
+   $ docker-compose up
+
+3️⃣  Mở Browser
+   👉 http://localhost:3000
+
+✅ Đơn giản! Không cần cài Node.js
+
+═══════════════════════════════════════════════════════════════
+
+PHƯƠNG PHÁP 3: Manual (Toàn quyền kiểm soát)
+──────────────────────────────────────────
+
+$ cd web
+$ npm install
+$ npm start
+
+═══════════════════════════════════════════════════════════════
+
+✨ TÍNH NĂNG
+
+🔐  Mã hóa File
+     - Drag & drop hoặc chọn file
+     - Nhập password
+     - Download file .aes
+
+🔓  Giải mã File
+     - Upload file .aes
+     - Nhập password
+     - Lấy file gốc
+
+📊  Thống kê
+     - Files đã xử lý
+     - Dung lượng tổng
+     - Uptime server
+
+═══════════════════════════════════════════════════════════════
+
+🎯 TÍNH NĂNG CHÍNH
+
+✅ Drag-Drop Upload
+✅ Real-time Processing
+✅ Beautiful UI (Responsive)
+✅ Password Strength Indicator
+✅ Auto File Cleanup
+✅ No File Stored on Server
+✅ AES-128-CBC Encryption
+✅ Support 100MB Files
+
+═══════════════════════════════════════════════════════════════
+
+🔒 VỀ BẢOẢO MẬT
+
+⚡ Mật khẩu phải 1-16 ký tự
+⚡ Không lưu password
+⚡ Files tự xóa sau 1 giờ
+⚡ HTTPS khuyên dùng
+⚡ Mã hóa AES-128 (quốc tế)
+
+═══════════════════════════════════════════════════════════════
+
+❓ THƯỜNG GẶP
+
+❌ "Cannot find module 'express'"
+✅ Chạy: npm install
+
+❌ "Port 3000 already in use"
+✅ PORT=3001 npm start
+
+❌ "Docker not found"
+✅ Cài Docker: https://docker.com
+
+═══════════════════════════════════════════════════════════════
+
+📁 CẤU TRÚC FOLDER
+
+web/
+├── index.html          → Giao diện
+├── style.css           → CSS (đẹp)
+├── app.js              → JavaScript (frontend)
+├── server.js           → Backend (mã hóa)
+├── package.json        → Dependencies
+├── start.sh            → Linux startup
+├── start.bat           → Windows startup
+├── docker-compose.yml  → Docker setup
+└── README.md           → Full docs
+
+═══════════════════════════════════════════════════════════════
+
+🚀 API ENDPOINTS
+
+POST /api/process      → Mã hóa/Giải mã file
+GET  /api/download/:id → Tải file
+GET  /api/stats        → Thống kê
+GET  /api/health       → Kiểm tra server
+
+═══════════════════════════════════════════════════════════════
+
+💻 PHÁT TRIỂN
+
+# Development (hot reload)
+npm run dev
+
+# Production
+npm start
+
+# Kiểm tra health
+curl http://localhost:3000/api/health
+
+═══════════════════════════════════════════════════════════════
+
+📚 TÀI LIỆU ĐẦY ĐỦ
+
+📖 README.md       → Hướng dẫn chi tiết
+⚙️  CONFIG.md      → Tùy chỉnh & deployment
+📋 .env.example    → Biến môi trường
+
+═══════════════════════════════════════════════════════════════
+
+🎉 READY TO ENCRYPT!
+
+Hãy bắt đầu:
+1. Chạy: bash start.sh (hoặc start.bat trên Windows)
+2. Mở: http://localhost:3000
+3. Kéo thả file
+4. Nhập password
+5. Nhấn "Mã hóa"
+6. Download file an toàn! 🔒
+
+═══════════════════════════════════════════════════════════════
+
+Version 1.0 | March 2026 | Happy Encrypting! 🚀

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES File Encryption Manager - Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>AES File Encryption Manager</h1>
+                <p>Mã hóa & Giải mã file an toàn với AES-128-CBC</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="encrypt">
+                    Mã hóa File
+                </button>
+                <button class="tab-button" data-tab="decrypt">
+                    Giải mã File
+                </button>
+                <button class="tab-button" data-tab="info">
+                    Thông tin
+                </button>
+            </div>
+
+            <!-- Encrypt Section -->
+            <section id="encrypt" class="tab-content active">
+                <div class="card">
+                    <h2>Mã hóa File</h2>
+
+                    <!-- Upload Area -->
+                    <div class="upload-container">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">📋</div>
+                            <h3>Kéo thả file vào đây</h3>
+                            <p>hoặc</p>
+                            <input type="file" id="fileInput" class="file-input" hidden>
+                            <button class="btn btn-primary" id="browseBtn">
+                                Chọn File
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- File Info -->
+                    <div id="fileInfo" class="file-info hidden">
+                        <div class="file-details">
+                            <div class="file-icon">■</div>
+                            <div class="file-data">
+                                <p class="file-name" id="fileName"></p>
+                                <p class="file-size" id="fileSize"></p>
+                                <p class="file-type" id="fileType"></p>
+                            </div>
+                            <button class="btn btn-small btn-secondary" id="clearFileBtn">X Xóa</button>
+                        </div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="form-group">
+                        <label for="passwordEnc">Mật khẩu (Password)</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="passwordEnc" class="form-control"
+                                placeholder="Nhập mật khẩu (tối đa 16 ký tự)" maxlength="16">
+                            <button type="button" class="btn-toggle-password" id="togglePasswordEnc">
+                                Hiện
+                            </button>
+                        </div>
+                        <div class="password-strength" id="strengthEnc"></div>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="savePassword" checked>
+                            <span>Nhớ mật khẩu trên trình duyệt này</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="deleteOriginal">
+                            <span>Xóa file gốc sau khi mã hóa</span>
+                        </label>
+                    </div>
+
+                    <!-- Encrypt Button -->
+                    <button class="btn btn-success btn-lg" id="encryptBtn" disabled>
+                        Mã hóa File
+                    </button>
+                </div>
+            </section>
+
+            <!-- Decrypt Section -->
+            <section id="decrypt" class="tab-content">
+                <div class="card">
+                    <h2>Giải mã File</h2>
+
+                    <!-- Upload Area -->
+                    <div class="upload-container">
+                        <div class="upload-area" id="uploadAreaDec">
+                            <div class="upload-icon">📋</div>
+                            <h3>Kéo thả file được mã hóa vào đây</h3>
+                            <p>hoặc</p>
+                            <input type="file" id="fileInputDec" class="file-input" hidden>
+                            <button class="btn btn-primary" id="browseBtnDec">
+                                Chọn File
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- File Info -->
+                    <div id="fileInfoDec" class="file-info hidden">
+                        <div class="file-details">
+                            <div class="file-icon">■</div>
+                            <div class="file-data">
+                                <p class="file-name" id="fileNameDec"></p>
+                                <p class="file-size" id="fileSizeDec"></p>
+                                <p class="file-type" id="fileTypeDec"></p>
+                            </div>
+                            <button class="btn btn-small btn-secondary" id="clearFileBtnDec">X Xóa</button>
+                        </div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="form-group">
+                        <label for="passwordDec">Mật khẩu (Password)</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="passwordDec" class="form-control"
+                                placeholder="Nhập mật khẩu để giải mã" maxlength="16">
+                            <button type="button" class="btn-toggle-password" id="togglePasswordDec">
+                                Hiện
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Decrypt Button -->
+                    <button class="btn btn-info btn-lg" id="decryptBtn" disabled>
+                        Giải mã File
+                    </button>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section id="info" class="tab-content">
+                <div class="card">
+                    <h2>Thông tin Hệ Thống</h2>
+
+                    <div class="info-content">
+                        <div class="info-box">
+                            <h3>Thuật toán Mã hóa</h3>
+                            <p><strong>AES-128-CBC</strong></p>
+                            <p>Tiêu chuẩn mã hóa quốc tế (NIST)</p>
+                            <p>Khóa: 128-bit | Block: 128-bit</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>Bảo mật</h3>
+                            <ul>
+                                <li>Mã hóa trong server (an toàn)</li>
+                                <li>Không lưu file trên server</li>
+                                <li>Xóa tự động sau 1 giờ</li>
+                                <li>HTTPS được khuyến nghị</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>Lưu ý</h3>
+                            <ul>
+                                <li>Mật khẩu tối đa 16 ký tự</li>
+                                <li>Nhớ lại mật khẩu!</li>
+                                <li>Backup file gốc</li>
+                                <li>Không hỗ trợ file > 100MB</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>Thống kê Hệ Thống</h3>
+                            <p>Files đã mã hóa: <strong id="statsEncrypted">0</strong></p>
+                            <p>Files đã giải mã: <strong id="statsDecrypted">0</strong></p>
+                            <p>Dung lượng xử lý: <strong id="statsSize">0 MB</strong></p>
+                            <p>Uptime: <strong id="statsUptime">--:--:--</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Progress Bar -->
+        <div id="progressContainer" class="progress-container hidden">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text" id="progressText">Đang xử lý...</p>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="notification" class="notification"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>AES Secure File Management System v1.0 | Backend hoạt động bình thường</p>
+            <p>© 2026 Security Team - Bảo vệ dữ liệu của bạn</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
