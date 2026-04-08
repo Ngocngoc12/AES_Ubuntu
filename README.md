@@ -8,8 +8,6 @@ Hệ thống mã hóa file AES-128-CBC với giao diện web hiện đại + ker
 
 ## ⚡ Quick Start (2 phút)
 
-### Cách 1: Dùng Web Interface (Khuyến nghị)
-
 ```bash
 cd AES_Ubuntu/web
 npm install
@@ -17,15 +15,6 @@ npm start
 ```
 
 Mở browser: **http://localhost:3000** ✨
-
-### Cách 2: Dùng CLI (Driver)
-
-```bash
-cd AES_Ubuntu
-make all
-sudo bash setup.sh
-./build/bin/file_manager
-```
 
 ---
 
@@ -39,11 +28,11 @@ sudo bash setup.sh
 │                                 │
 │  [Mã hóa]  [Giải mã]  [Thông tin]│
 │                                 │
-│  📁 Kéo thả file hoặc click      │
+│  📁 Kéo thả file hoặc click     │
 │                                 │
 │  🔐 Mật khẩu: [________]        │
 │                                 │
-│         [Mã hóa File]          │
+│         [Mã hóa File]           │
 │                                 │
 │  ✓ Tải: document.txt.aes       │
 └─────────────────────────────────┘
@@ -66,13 +55,13 @@ sudo bash setup.sh
 │                                 │
 │  [Mã hóa]  [Giải mã]  [Thông tin]│
 │                                 │
-│  📁 Kéo thả file .aes hoặc click │
+│  📁 Kéo thả file .aes hoặc click│
 │                                 │
 │  🔓 Mật khẩu: [________]        │
 │                                 │
-│        [Giải mã File]          │
+│        [Giải mã File]           │
 │                                 │
-│  ✓ Tải: document.txt           │
+│  ✓ Tải: document.txt            │
 └─────────────────────────────────┘
 ```
 
@@ -91,16 +80,16 @@ sudo bash setup.sh
 ┌─────────────────────────────────┐
 │  AES File Encryption Manager    │
 │                                 │
-│  [Mã hóa]  [Giải mã]  [Thông tin]│
+│  [Mã hóa]  [Giải mã] [Thông tin]│
 │                                 │
-│  📊 Thống kê sử dụng:            │
+│  📊 Thống kê sử dụng:           │
 │                                 │
-│  • Tổng file xử lý: 45         │
+│  • Tổng file xử lý: 45          │
 │  • File mã hóa: 28             │
 │  • File giải mã: 17            │
 │  • Dữ liệu xử lý: 1.2 GB       │
 │  • Thời gian trung bình: 250ms │
-│                                 │
+│                                │
 │  🔐 Algorithm: AES-128-CBC     │
 │  ✓ Status: Running             │
 └─────────────────────────────────┘
@@ -121,7 +110,7 @@ sudo bash setup.sh
 - **Node.js** 14+ (cần cài npm)
 - **Hoặc:** Ubuntu 20.04+ (cho driver)
 
-### ⚙️ Cài đặt Web
+### ⚙️ Cài đặt
 
 ```bash
 # 1. Vào thư mục web
@@ -138,22 +127,6 @@ npm start
 ```
 Server is running on http://localhost:3000
 Open your browser to http://localhost:3000
-```
-
-### ⚙️ Cài đặt Driver (tùy chọn)
-
-```bash
-# Yêu cầu Linux 64-bit + build tools
-cd AES_Ubuntu
-
-# Build kernel driver + CLI
-make all
-
-# Cài đặt tự động
-sudo bash setup.sh
-
-# Chạy CLI app
-./build/bin/file_manager
 ```
 
 ---
@@ -300,82 +273,7 @@ chmod 777 web/uploads
 cp file.txt file.txt.backup
 ```
 
----
 
-## 🔧 Advanced - Kernel Driver
-
-**Cho những ai muốn hiểu chi tiết...**
-
-### Kiến trúc Driver
-
-```c
-// IOCTL interface
-#define AES_DO_CRYPT _IOWR(AES_IOCTL_MAGIC, 1, struct aes_args)
-
-// Data structure
-struct aes_args {
-    unsigned char key[16];      // 128-bit key
-    unsigned char *in_buf;      // Input buffer
-    unsigned char *out_buf;     // Output buffer
-    size_t len;                 // Data length
-    int is_encrypt;             // 1=encrypt, 0=decrypt
-};
-```
-
-### Quy trình xử lý
-
-```
-User App (CLI)
-    ↓
-ioctl(/dev/aes_engine)
-    ↓
-Kernel Driver
-    ├─ Validate input
-    ├─ Copy user-space → kernel-space
-    ├─ Call Linux crypto API (skcipher)
-    ├─ AES-128-CBC processing
-    └─ Copy result → user-space
-    ↓
-Encrypted File
-```
-
-### Build Driver
-
-```bash
-# Build kernel driver
-make driver
-
-# Build CLI app
-make userspace
-
-# Build tất cả
-make all
-
-# Cài đặt
-sudo make install
-```
-
-### Chạy CLI
-
-```bash
-# Run file manager
-./build/bin/file_manager
-
-# Hoặc specify thư mục
-./build/bin/file_manager /tmp
-```
-
-**CLI Menu:**
-```
-1. Mã hóa File (Encrypt)
-2. Giải mã File (Decrypt)
-3. Danh sách File (List)
-4. Thông tin File (Info)
-5. Xóa File (Delete)
-0. Thoát (Exit)
-```
-
----
 
 ## 📚 Tài liệu chi tiết
 
@@ -403,55 +301,19 @@ sudo make install
 - File upload handling
 
 **Encryption:**
-- **Web:** Node.js crypto module
-- **Driver:** Linux AES-NI (hardware acceleration)
-- **Algorithm:** AES-128-CBC (FIPS 197)
+- Node.js crypto module
+- Algorithm: AES-128-CBC (FIPS 197)
 
 ---
 
-## 📝 Giấy phép
-
-GPL v2 License - Tự do sử dụng & sửa đổi
-
----
-
-## 🔄 Version & Changelog
-
-### v1.0 (Current)
-- ✅ Web interface với 3 tab
-- ✅ Kernel driver AES-128-CBC
-- ✅ CLI application
-- ✅ Full documentation
-- ✅ Performance optimized
-
-### Planned v1.1
-- 🔸 Random IV support
-- 🔸 HMAC authentication
-- 🔸 PBKDF2 key derivation
-- 🔸 File drag-drop improvements
-- 🔸 Download progress tracking
-
----
 
 ## 🚀 Bắt đầu ngay
 
-**Tùy chọn:**
+```bash
+cd web && npm install && npm start
+```
 
-1. **Nhanh nhất (Web):**
-   ```bash
-   cd web && npm install && npm start
-   ```
-
-2. **Đầy đủ (Driver + CLI + Web):**
-   ```bash
-   make all && sudo bash setup.sh
-   ```
-
-3. **Chỉ CLI (Linux):**
-   ```bash
-   make driver && sudo insmod build/bin/aes_driver.ko
-   ./build/bin/file_manager
-   ```
+Rồi mở browser: **http://localhost:3000**
 
 ---
 
@@ -468,6 +330,3 @@ GPL v2 License - Tự do sử dụng & sửa đổi
 **Status:** ✅ Ready to Use  
 **Latest Version:** 1.0
 
-```
-Made with ❤️ for secure file encryption
-```
