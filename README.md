@@ -1,6 +1,6 @@
-# 🔒 AES File Encryption Manager - Web + Kernel Driver
+# 🔒 AES File Encryption 
 
-**Tải lên & mã hóa file ngay lập tức với giao diện web**
+**Tải lên & mã hóa file với giao diện web**
 
 Hệ thống mã hóa file AES-128-CBC với giao diện web hiện đại + kernel driver Linux cho xử lý mã hóa nhanh chóng và bảo mật.
 
