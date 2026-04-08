@@ -8,39 +8,32 @@
 
 ### What Was Built?
 
-A **complete AES-128-CBC file encryption system** with kernel driver (Linux), C CLI applications, AND a modern **web interface**.
+A **complete AES-128-CBC file encryption system** with a modern **web interface** for easy file encryption/decryption.
 
 ### Components
 
 ```
 AES_Ubuntu/
-├── 1️⃣ KERNEL DRIVER (Linux)
-│   └── aes_driver.c - Encryption hardware acceleration (Ubuntu 64-bit)
+├── 🌐 WEB INTERFACE (Node.js) - Main Application
+│   ├── index.html - Modern web UI
+│   ├── app.js - Frontend JavaScript
+│   ├── server.js - Express backend + AES encryption
+│   ├── style.css - Responsive design
+│   ├── package.json - Dependencies
+│   ├── start.sh / start.bat - Launch scripts
+│   ├── Dockerfile - Docker image
+│   └── uploads/ - Temporary file storage (auto-cleanup)
 │
-├── 2️⃣ C CLI TOOLS (Linux/Windows)
-│   ├── aes_utils.c/h - AES library
-│   ├── file_manager.c - File management
-│   ├── usb_manager.c - USB operations
-│   └── Makefile - Compilation
+├── 📚 DOCUMENTATION
+│   ├── README.md - Full documentation
+│   ├── QUICKSTART.md - 5-minute setup
+│   ├── DEMO_GUIDE.md - Usage guide
+│   ├── COMPLETE_OVERVIEW.md - This file
+│   └── INDEX.md - Documentation index
 │
-├── 3️⃣ WEB INTERFACE (Node.js)
-│   ├── index.html - Web UI (professional/gray theme)
-│   ├── app.js - Frontend logic
-│   ├── server.js - Express backend + encryption
-│   ├── style.css - Responsive CSS
-│   └── package.json - Dependencies
-│
-├── 4️⃣ DOCUMENTATION
-│   ├── README.md - Full guide
-│   ├── CONFIG.md - Configuration
-│   ├── DEMO_GUIDE.md - Step-by-step demo ← YOU ARE HERE
-│   ├── USB_DEPLOYMENT.md - USB guide
-│   └── LAB_EXERCISE.sh - Educational exercises
-│
-└── 5️⃣ DEPLOYMENT
-    ├── start.sh, start.bat - Startup scripts
-    ├── Dockerfile - Docker container
-    └── docker-compose.yml - Docker compose
+└── 🔐 ENCRYPTION ENGINE
+    ├── server.js - AES-128-CBC implementation
+    └── aes_crypto.h - Crypto structures
 ```
 
 ---
@@ -124,29 +117,25 @@ Process ID: 20904
 ```
 c:\Users\hoang\Downloads\AES_Ubuntu\
 
-├── aes_driver.c            ← Kernel driver (Linux Ubuntu 64-bit)
-├── usb_manager.c           ← USB manager (C code)
-├── aes_utils.h             ← AES utility header
+├── aes_crypto.h            ← AES header definitions
 │
-├── web/                    ← 🌐 WEB INTERFACE (YOUR HERE!)
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   ├── server.js
-│   ├── package.json
-│   ├── README.md
-│   ├── CONFIG.md
-│   ├── .env.example
-│   ├── start.sh
-│   ├── start.bat
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   ├── .gitignore
-│   ├── uploads/            ← Temp files (auto-cleanup)
+├── web/                    ← 🌐 WEB INTERFACE (MAIN APP)
+│   ├── index.html          ← Web UI
+│   ├── app.js              ← Frontend
+│   ├── server.js           ← Backend + encryption
+│   ├── style.css /
+│   ├── style-pro.css       ← Themes
+│   ├── package.json        ← Dependencies
+│   ├── README.md           ← Web docs
+│   ├── CONFIG.md           ← Configuration
+│   ├── start.sh            ← Launch (Linux/Mac)
+│   ├── start.bat           ← Launch (Windows)
+│   ├── Dockerfile          ← Docker image
+│   ├── docker-compose.yml  ← Docker compose
+│   ├── uploads/            ← Temp files (auto cleanup)
 │   └── node_modules/       ← Dependencies
 │
-├── DEMO_GUIDE.md           ← 📘 How to demo (full guide)
-├── USB_DEPLOYMENT.md       ← 💾 USB tutorial
+├── DEMO_GUIDE.md           ← 📘 Usage guide
 ├── LAB_EXERCISE.sh         ← 🎓 Educational exercises
 │
 └── QUICKSTART.txt          ← ⚡ Quick reference
@@ -454,10 +443,9 @@ git push heroku main
 1. **README.md** - Overview & features
 2. **CONFIG.md** - Customization & deployment
 3. **DEMO_GUIDE.md** - Step-by-step demo (10 parts)
-4. **USB_DEPLOYMENT.md** - USB/portable guide
-5. **LAB_EXERCISE.sh** - Educational content
-6. **QUICKSTART.txt** - 2-minute quick start
-7. **THIS FILE** - Complete overview
+4. **LAB_EXERCISE.sh** - Educational content
+5. **QUICKSTART.txt** - 2-minute quick start
+6. **THIS FILE** - Complete overview
 
 ---
 
@@ -558,7 +546,6 @@ User Guide Provided:      YES ✓
 4. **Review Examples**
    - DEMO_GUIDE.md has 10 complete examples
    - LAB_EXERCISE.sh has test scenarios
-   - USB_DEPLOYMENT.md has real-world usage
 
 ---
 

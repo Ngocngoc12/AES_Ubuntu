@@ -4,212 +4,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AES File Encryption Manager - Web</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AES Encryption Manager Pro - USB Manager</title>
+    <link rel="stylesheet" href="style-pro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
             <div class="header-content">
-                <h1>AES File Encryption Manager</h1>
-                <p>Mã hóa & Giải mã file an toàn với AES-128-CBC</p>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Tab Navigation -->
-            <div class="tabs">
-                <button class="tab-button active" data-tab="encrypt">
-                    Mã hóa File
-                </button>
-                <button class="tab-button" data-tab="decrypt">
-                    Giải mã File
-                </button>
-                <button class="tab-button" data-tab="info">
-                    Thông tin
-                </button>
-            </div>
-
-            <!-- Encrypt Section -->
-            <section id="encrypt" class="tab-content active">
-                <div class="card">
-                    <h2>Mã hóa File</h2>
-
-                    <!-- Upload Area -->
-                    <div class="upload-container">
-                        <div class="upload-area" id="uploadArea">
-                            <div class="upload-icon">📋</div>
-                            <h3>Kéo thả file vào đây</h3>
-                            <p>hoặc</p>
-                            <input type="file" id="fileInput" class="file-input" hidden>
-                            <button class="btn btn-primary" id="browseBtn">
-                                Chọn File
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- File Info -->
-                    <div id="fileInfo" class="file-info hidden">
-                        <div class="file-details">
-                            <div class="file-icon">■</div>
-                            <div class="file-data">
-                                <p class="file-name" id="fileName"></p>
-                                <p class="file-size" id="fileSize"></p>
-                                <p class="file-type" id="fileType"></p>
-                            </div>
-                            <button class="btn btn-small btn-secondary" id="clearFileBtn">X Xóa</button>
-                        </div>
-                    </div>
-
-                    <!-- Password Input -->
-                    <div class="form-group">
-                        <label for="passwordEnc">Mật khẩu (Password)</label>
-                        <div class="password-input-wrapper">
-                            <input type="password" id="passwordEnc" class="form-control"
-                                placeholder="Nhập mật khẩu (tối đa 16 ký tự)" maxlength="16">
-                            <button type="button" class="btn-toggle-password" id="togglePasswordEnc">
-                                Hiện
-                            </button>
-                        </div>
-                        <div class="password-strength" id="strengthEnc"></div>
-                    </div>
-
-                    <!-- Options -->
-                    <div class="options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="savePassword" checked>
-                            <span>Nhớ mật khẩu trên trình duyệt này</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="deleteOriginal">
-                            <span>Xóa file gốc sau khi mã hóa</span>
-                        </label>
-                    </div>
-
-                    <!-- Encrypt Button -->
-                    <button class="btn btn-success btn-lg" id="encryptBtn" disabled>
-                        Mã hóa File
-                    </button>
+                <h1><i class="fas fa-lock"></i> AES Encryption Manager Pro</h1>
+                <div class="header-info">
+                    <span class="status" id="systemStatus">
+                        <i class="fas fa-circle" style="color: #4CAF50;"></i> Online
+                    </span>
+                    <span class="version">v1.0.0</span>
                 </div>
-            </section>
-
-            <!-- Decrypt Section -->
-            <section id="decrypt" class="tab-content">
-                <div class="card">
-                    <h2>Giải mã File</h2>
-
-                    <!-- Upload Area -->
-                    <div class="upload-container">
-                        <div class="upload-area" id="uploadAreaDec">
-                            <div class="upload-icon">📋</div>
-                            <h3>Kéo thả file được mã hóa vào đây</h3>
-                            <p>hoặc</p>
-                            <input type="file" id="fileInputDec" class="file-input" hidden>
-                            <button class="btn btn-primary" id="browseBtnDec">
-                                Chọn File
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- File Info -->
-                    <div id="fileInfoDec" class="file-info hidden">
-                        <div class="file-details">
-                            <div class="file-icon">■</div>
-                            <div class="file-data">
-                                <p class="file-name" id="fileNameDec"></p>
-                                <p class="file-size" id="fileSizeDec"></p>
-                                <p class="file-type" id="fileTypeDec"></p>
-                            </div>
-                            <button class="btn btn-small btn-secondary" id="clearFileBtnDec">X Xóa</button>
-                        </div>
-                    </div>
-
-                    <!-- Password Input -->
-                    <div class="form-group">
-                        <label for="passwordDec">Mật khẩu (Password)</label>
-                        <div class="password-input-wrapper">
-                            <input type="password" id="passwordDec" class="form-control"
-                                placeholder="Nhập mật khẩu để giải mã" maxlength="16">
-                            <button type="button" class="btn-toggle-password" id="togglePasswordDec">
-                                Hiện
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Decrypt Button -->
-                    <button class="btn btn-info btn-lg" id="decryptBtn" disabled>
-                        Giải mã File
-                    </button>
-                </div>
-            </section>
-
-            <!-- Info Section -->
-            <section id="info" class="tab-content">
-                <div class="card">
-                    <h2>Thông tin Hệ Thống</h2>
-
-                    <div class="info-content">
-                        <div class="info-box">
-                            <h3>Thuật toán Mã hóa</h3>
-                            <p><strong>AES-128-CBC</strong></p>
-                            <p>Tiêu chuẩn mã hóa quốc tế (NIST)</p>
-                            <p>Khóa: 128-bit | Block: 128-bit</p>
-                        </div>
-
-                        <div class="info-box">
-                            <h3>Bảo mật</h3>
-                            <ul>
-                                <li>Mã hóa trong server (an toàn)</li>
-                                <li>Không lưu file trên server</li>
-                                <li>Xóa tự động sau 1 giờ</li>
-                                <li>HTTPS được khuyến nghị</li>
-                            </ul>
-                        </div>
-
-                        <div class="info-box">
-                            <h3>Lưu ý</h3>
-                            <ul>
-                                <li>Mật khẩu tối đa 16 ký tự</li>
-                                <li>Nhớ lại mật khẩu!</li>
-                                <li>Backup file gốc</li>
-                                <li>Không hỗ trợ file > 100MB</li>
-                            </ul>
-                        </div>
-
-                        <div class="info-box">
-                            <h3>Thống kê Hệ Thống</h3>
-                            <p>Files đã mã hóa: <strong id="statsEncrypted">0</strong></p>
-                            <p>Files đã giải mã: <strong id="statsDecrypted">0</strong></p>
-                            <p>Dung lượng xử lý: <strong id="statsSize">0 MB</strong></p>
-                            <p>Uptime: <strong id="statsUptime">--:--:--</strong></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Progress Bar -->
-        <div id="progressContainer" class="progress-container hidden">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
             </div>
-            <p class="progress-text" id="progressText">Đang xử lý...</p>
         </div>
+    </header>
 
-        <!-- Status Messages -->
-        <div id="notification" class="notification"></div>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a href="#" class="nav-item" data-page="devices">
+                <i class="fas fa-usb"></i> USB Devices
+            </a>
+            <a href="#" class="nav-item" data-page="files">
+                <i class="fas fa-folder-open"></i> File Manager
+            </a>
+            <a href="#" class="nav-item" data-page="encrypt">
+                <i class="fas fa-shield-alt"></i> Encrypt/Decrypt
+            </a>
+            <a href="#" class="nav-item" data-page="backup">
+                <i class="fas fa-database"></i> Backup & Restore
+            </a>
+            <a href="#" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+        </nav>
+    </div>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>AES Secure File Management System v1.0 | Backend hoạt động bình thường</p>
-            <p>© 2026 Security Team - Bảo vệ dữ liệu của bạn</p>
-        </footer>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboard-page">
+                <div class="page-header">
+                    <h2>Dashboard</h2>
+                    <p>Tổng quan hệ thống AES Encryption</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- USB Devices Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-usb"></i>
+                            <h3>USB Devices</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-number" id="deviceCount">0</div>
+                            <p class="stat-label">Thiết bị được phát hiện</p>
+                            <div id="devicesList" class="devices-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Storage Stats Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-hdd"></i>
+                            <h3>Storage Info</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-item">
+                                <span class="stat-label">Tổng dung lượng:</span>
+                                <span class="stat-value" id="totalStorage">0 GB</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Đã sử dụng:</span>
+                                <span class="stat-value" id="usedStorage">0 GB</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Còn trống:</span>
+                                <span class="stat-value" id="freeStorage">0 GB</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="storageProgress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Encryption Stats Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-lock"></i>
+                            <h3>Encryption Stats</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-item">
+                                <span class="stat-label">File được mã hóa:</span>
+                                <span class="stat-value" id="encryptedCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">File bình thường:</span>
+                                <span class="stat-value" id="normalCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Tổng file:</span>
+                                <span class="stat-value" id="totalFiles">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-history"></i>
+                            <h3>Recent Activities</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="activity-log" id="activityLog">
+                                <li class="activity-item">
+                                    <span class="activity-time">Bây giờ</span>
+                                    <span class="activity-text">Hệ thống khởi động</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USB Devices Page -->
+            <div class="page hidden" id="devices-page">
+                <div class="page-header">
+                    <h2>USB Devices Manager</h2>
+                    <button class="btn btn-primary" id="refreshDevices">
+                        <i class="fas fa-sync"></i> Refresh
+                    </button>
+                </div>
+
+                <div class="devices-container">
+                    <div id="usbDevicesList" class="devices-grid">
+                        <div class="device-card empty">
+                            <p>Không tìm thấy thiết bị USB. Vui lòng cắm USB vào.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Manager Page -->
+            <div class="page hidden" id="files-page">
+                <div class="page-header">
+                    <h2>File Manager</h2>
+                    <div class="header-actions">
+                        <select id="deviceSelect" class="form-control" style="width: 200px;">
+                            <option>Chọn USB Device</option>
+                        </select>
+                        <button class="btn btn-primary" id="uploadFileBtn">
+                            <i class="fas fa-cloud-upload-alt"></i> Upload
+                        </button>
+                    </div>
+                </div>
+
+                <div class="file-browser">
+                    <div class="breadcrumb" id="breadcrumb">
+                        <span class="crumb"><i class="fas fa-home"></i> Home</span>
+                    </div>
+
+                    <div class="file-list">
+                        <div class="file-header">
+                            <span>Tên file</span>
+                            <span>Kích thước</span>
+                            <span>Loại</span>
+                            <span>Ngày sửa</span>
+                            <span>Thao tác</span>
+                        </div>
+                        <div id="fileListContainer" class="file-items">
+                            <div class="empty-message">Chọn USB device để xem file</div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="file" id="fileInput" style="display: none;" multiple>
+            </div>
+
+            <!-- Encrypt/Decrypt Page -->
+            <div class="page hidden" id="encrypt-page">
+                <div class="page-header">
+                    <h2>Encrypt/Decrypt Manager</h2>
+                </div>
+
+                <div class="encrypt-grid">
+                    <!-- Encrypt Section -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-lock"></i>
+                            <h3>Mã hóa file</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Chọn file:</label>
+                                <input type="file" id="encryptFileInput" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu:</label>
+                                <input type="password" id="encryptPassword" class="form-control"
+                                    placeholder="Nhập mật khẩu mã hóa">
+                                <small class="form-text">Tối thiểu 8 ký tự, chứa chữ hoa, số và ký tự đặc biệt</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Xác nhận mật khẩu:</label>
+                                <input type="password" id="encryptPassword2" class="form-control"
+                                    placeholder="Nhập lại mật khẩu">
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="deleteOriginal" checked>
+                                    <label for="deleteOriginal">Xóa file gốc sau khi mã hóa</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-success btn-block" id="encryptBtn">
+                                <i class="fas fa-shield-alt"></i> Bắt đầu mã hóa
+                            </button>
+                            <div class="progress-container" id="encryptProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="encryptProgressBar"></div>
+                                </div>
+                                <p id="encryptProgressText" class="progress-text">0%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decrypt Section -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-unlock"></i>
+                            <h3>Giải mã file</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Chọn file mã hóa (.enc):</label>
+                                <input type="file" id="decryptFileInput" class="form-control" accept=".enc">
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu:</label>
+                                <input type="password" id="decryptPassword" class="form-control"
+                                    placeholder="Nhập mật khẩu giải mã">
+                            </div>
+                            <button class="btn btn-info btn-block" id="decryptBtn">
+                                <i class="fas fa-key"></i> Bắt đầu giải mã
+                            </button>
+                            <div class="progress-container" id="decryptProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="decryptProgressBar"></div>
+                                </div>
+                                <p id="decryptProgressText" class="progress-text">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Operations -->
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <i class="fas fa-list"></i>
+                        <h3>Hoạt động gần đây</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="operationsTable">
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Loại</th>
+                                    <th>Kích thước</th>
+                                    <th>Thời gian</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="operationsBody">
+                                <tr>
+                                    <td colspan="5" class="text-center">Chưa có hoạt động</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backup & Restore Page -->
+            <div class="page hidden" id="backup-page">
+                <div class="page-header">
+                    <h2>Backup & Restore</h2>
+                </div>
+
+                <div class="backup-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-save"></i>
+                            <h3>Tạo Backup</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Chọn USB Device:</label>
+                                <select id="backupDevice" class="form-control">
+                                    <option>Chọn device để backup</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tên Backup:</label>
+                                <input type="text" id="backupName" class="form-control"
+                                    placeholder="e.g., USB_Backup_2024-04-08">
+                            </div>
+                            <div class="form-group">
+                                <label>Chế độ:</label>
+                                <div class="radio-group">
+                                    <label class="radio-item">
+                                        <input type="radio" name="backupMode" value="full" checked>
+                                        <span>Full Backup (Toàn bộ dữ liệu)</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="backupMode" value="encrypted">
+                                        <span>Encrypted Files Only (Chỉ file mã hóa)</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn btn-success btn-block" id="backupBtn">
+                                <i class="fas fa-database"></i> Tạo Backup
+                            </button>
+                            <div class="progress-container" id="backupProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="backupProgressBar"></div>
+                                </div>
+                                <p id="backupProgressText" class="progress-text">0%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-undo"></i>
+                            <h3>Restore từ Backup</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Chọn file Backup:</label>
+                                <input type="file" id="backupFile" class="form-control" accept=".backup,.zip">
+                            </div>
+                            <div class="form-group">
+                                <label>Đích restore:</label>
+                                <select id="restoreDevice" class="form-control">
+                                    <option>Chọn USB device đích</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="overwrite" checked>
+                                    <label for="overwrite">Ghi đè file hiện có</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-warning btn-block" id="restoreBtn">
+                                <i class="fas fa-undo"></i> Restore Backup
+                            </button>
+                            <div class="progress-container" id="restoreProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="restoreProgressBar"></div>
+                                </div>
+                                <p id="restoreProgressText" class="progress-text">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backup History -->
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <i class="fas fa-history"></i>
+                        <h3>Lịch sử Backup</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="backupHistoryTable">
+                            <thead>
+                                <tr>
+                                    <th>Tên Backup</th>
+                                    <th>Kích thước</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Loại</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="backupHistoryBody">
+                                <tr>
+                                    <td colspan="5" class="text-center">Chưa có backup nào</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page hidden" id="settings-page">
+                <div class="page-header">
+                    <h2>Cài đặt hệ thống</h2>
+                </div>
+
+                <div class="settings-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-lock"></i>
+                            <h3>Security Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Thuật toán mã hóa:</label>
+                                <select class="form-control" id="algorithmSelect">
+                                    <option value="aes-128-cbc">AES-128-CBC (Khuyến nghị)</option>
+                                    <option value="aes-256-cbc">AES-256-CBC (Bảo mật cao)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Yêu cầu mật khẩu mạnh:</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="strongPassword" checked>
+                                    <span class="toggle"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Application Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Ngôn ngữ:</label>
+                                <select class="form-control" id="languageSelect">
+                                    <option value="vi">Tiếng Việt</option>
+                                    <option value="en">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Chế độ giao diện:</label>
+                                <div class="radio-group">
+                                    <label class="radio-item">
+                                        <input type="radio" name="theme" value="light" checked>
+                                        <span>Light Mode</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="theme" value="dark">
+                                        <span>Dark Mode</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>About</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>AES Encryption Manager Pro</strong></p>
+                            <p>Version: 1.0.0</p>
+                            <p>License: GPL 3.0</p>
+                            <p>© 2024 Security Team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notifications -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <!-- Modals -->
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="confirmTitle">Xác nhận</h3>
+            <p id="confirmMessage"></p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal('confirmModal')">Hủy</button>
+                <button class="btn btn-primary" id="confirmBtn">Xác nhận</button>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
+    <script src="app-pro.js"></script>
 </body>
 
 </html>

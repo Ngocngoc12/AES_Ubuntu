@@ -43,7 +43,7 @@ const upload = multer({
 });
 
 // Middleware
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, '.')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -127,8 +127,14 @@ function decryptData(data, password) {
 // Routes
 // ========================================
 
+// Default route - Pro interface
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Simple interface route
+app.get('/simple', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index-simple.html'));
 });
 
 app.post('/api/process', upload.single('file'), async (req, res) => {

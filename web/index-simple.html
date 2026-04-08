@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Crypt - File Encryption/Decryption</title>
+    <link rel="stylesheet" href="style-simple.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>USB Crypt</h1>
+            <p>File Encryption/Decryption</p>
+        </header>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span class="status-text" id="statusText">Checking USB Device...</span>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input File Section -->
+            <div class="section">
+                <label class="section-label">Input File or Folder</label>
+                <div class="input-group">
+                    <input type="text" id="inputPath" class="path-input" placeholder="/media/chien/1234-5678/textgoc"
+                        readonly>
+                    <button class="btn btn-secondary" id="chooseFileBtn">Chọn File</button>
+                    <button class="btn btn-secondary" id="chooseFolderBtn">Chọn Folder</button>
+                </div>
+            </div>
+
+            <!-- Output File Section -->
+            <div class="section">
+                <label class="section-label">Output File (to USB)</label>
+                <div class="input-group">
+                    <input type="text" id="outputPath" class="path-input"
+                        placeholder="/media/chien/1234-5678/resultmahoa.txt" readonly>
+                    <button class="btn btn-secondary" id="chooseOutputBtn">Chọn Output</button>
+                </div>
+            </div>
+
+            <!-- Password Section -->
+            <div class="section">
+                <label class="section-label">Password</label>
+                <div class="password-group">
+                    <input type="password" id="password" class="password-input" placeholder="Nhập mật khẩu...">
+                    <button class="btn-toggle-password" id="togglePassword" type="button">
+                        <span>👁</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions">
+                <button class="btn btn-primary btn-large" id="encryptBtn">
+                    🔒 Encrypt
+                </button>
+                <button class="btn btn-primary btn-large" id="decryptBtn">
+                    🔓 Decrypt
+                </button>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="section" id="progressSection" style="display: none;">
+                <label class="section-label">Progress</label>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">0%</p>
+            </div>
+
+            <!-- Status Messages -->
+            <div id="messageBox" class="message-box" style="display: none;">
+                <p id="messageText"></p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 USB Crypt System - Bảo vệ dữ liệu của bạn</p>
+        </footer>
+    </div>
+
+    <!-- Hidden file inputs -->
+    <input type="file" id="fileInput" style="display: none;">
+    <input type="file" id="folderInput" webkitdirectory style="display: none;">
+
+    <script src="app-simple.js"></script>
+</body>
+
+</html>

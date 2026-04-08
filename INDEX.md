@@ -1,443 +1,311 @@
-# 📑 AES ENCRYPTION SYSTEM - DOCUMENTATION INDEX
+# 📑 AES Encryption System - Documentation Index
 
-**Status**: ✅ Complete & Ready  
-**Server**: 🟢 Running at http://localhost:3000  
+**Project Focus**: 🔧 **Kernel Driver Development** + 📱 **CLI Applications**  
+**Status**: ✅ Complete & Production Ready  
 **Version**: 1.0  
-**Date**: 2026-03-25  
+**Date**: 2026-04-08  
 
 ---
 
-## 🗂️ QUICK NAVIGATION
+## 🎯 Đề bài chính
 
-### 🚀 **START HERE** (Pick One)
-
-| If You Want To... | Read This | Time |
-|------------------|-----------|------|
-| **Get the 2-minute version** | [QUICKSTART.txt](QUICKSTART.txt) | ⏱️ 2 min |
-| **Complete step-by-step guide** | [DEMO_GUIDE.md](DEMO_GUIDE.md) | 📘 20 min |
-| **Use on USB immediately** | [USB_DEPLOYMENT.md](USB_DEPLOYMENT.md) | 💾 15 min |
-| **Educational exercises** | [LAB_EXERCISE.sh](LAB_EXERCISE.sh) | 🎓 30 min |
-| **Everything at a glance** | [COMPLETE_OVERVIEW.md](COMPLETE_OVERVIEW.md) | 📊 10 min |
-| **All details explained** | [web/README.md](web/README.md) | 📖 Full |
+```
+1. ✅ Viết driver AES - Triển khai trong kernel space
+2. ✅ Quản lý file mã hóa - File được mã hóa qua driver
+3. ✅ CLI Applications - File Manager
+4. ⚡ Giao diện web - Phụ trợ (tùy chọn)
+```
 
 ---
 
-## 📚 ALL DOCUMENTATION FILES
+## 📚 Bắt đầu từ đây
 
-### Core Documentation
+| Bạn muốn... | Đọc file này | Thời gian |
+|-----------|-----------|----------|
+| **Cài đặt & chạy ngay** | [QUICKSTART.md](QUICKSTART.md) | ⏱️ 5 phút |
+| **Hướng dẫn chi tiết** | [DEMO_GUIDE.md](DEMO_GUIDE.md) | 📘 20 phút |
+| **Hướng dẫn cài đặt** | [INSTALL.md](INSTALL.md) | 📖 15 phút |
+| **Tổng quan dự án** | [README.md](README.md) | 📊 30 phút |
+| **Cấu trúc chi tiết** | [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) | 🔍 20 phút |
+
+---
+
+## 📖 Tất cả tài liệu
 
 ```
 AES_Ubuntu/
 │
-├─ 🚀 QUICKSTART.txt                  ← 2-minute quick reference
-├─ 📘 DEMO_GUIDE.md                   ← Complete demo guide (10 sections)
-├─ 💾 USB_DEPLOYMENT.md               ← USB setup & usage
-├─ 🎓 LAB_EXERCISE.sh                 ← Educational exercises
-├─ 📊 COMPLETE_OVERVIEW.md            ← Full project overview
-├─ 📑 INDEX.md                        ← You are here!
+├─ 🎯 QUICKSTART.md - Bắt đầu trong 5 phút
+│  └─ Gồm: build + install + chạy
 │
-└─ web/
-   ├─ 📖 README.md                    ← Full web documentation (Vietnamese)
-   ├─ ⚙️ CONFIG.md                    ← Configuration & customization
-   ├─ 🔧 .env.example                 ← Environment variables
-   │
-   ├─ 🌐 index.html                   ← Web interface
-   ├─ 🎨 style.css                    ← Stylesheet (professional gray theme)
-   ├─ ⚡ app.js                       ← Frontend JavaScript
-   ├─ 🔐 server.js                    ← Backend + encryption engine
-   ├─ 📦 package.json                 ← Dependencies
-   │
-   ├─ 🐳 Dockerfile                   ← Docker image
-   ├─ 🐳 docker-compose.yml           ← Docker compose
-   ├─ 🔨 start.sh                     ← Linux startup
-   ├─ 🔨 start.bat                    ← Windows startup
-   │
-   └─ .gitignore
+├─ 🔧 INSTALL.md - Hướng dẫn cài đặt chi tiết
+│  ├─ Yêu cầu hệ thống
+│  ├─ Build kernel driver
+│  ├─ Build user-space apps
+│  ├─ Load driver
+│  ├─ Kiểm tra cài đặt
+│  └─ Troubleshooting
+│
+├─ 📘 DEMO_GUIDE.md - Hướng dẫn sử dụng
+│  ├─ Chạy File Manager
+│  ├─ Demo mã hóa/giải mã
+│  ├─ API Reference
+│  ├─ Thống kê & monitoring
+│  ├─ Hiệu năng
+│  ├─ Bảo mật
+│  └─ Troubleshooting
+│
+├─ 📊 README.md - Tài liệu toàn diện
+│  ├─ Mô tả dự án (DRIVER + CLI + WEB)
+│  ├─ Cấu trúc project
+│  ├─ Installation steps
+│  ├─ Kiến trúc kỹ thuật
+│  ├─ Bảo mật
+│  ├─ Performance
+│  └─ Troubleshooting
+│
+├─ 🔍 PROJECT_STRUCTURE.md - Chi tiết cấu trúc
+│  ├─ Mô tả từng file
+│  ├─ Kernel driver details
+│  ├─ User-space apps details
+│  ├─ Build process
+│  ├─ Data flow
+│  └─ Line count statistics
+│
+├─ 📋 COMPLETION_SUMMARY.md - Tóm tắt hoàn thành
+│  ├─ Những gì được xây dựng
+│  ├─ Features list
+│  ├─ Architecture overview
+│  ├─ Security features
+│  └─ Completion checklist
+│
+├─ 📝 COMPLETE_OVERVIEW.md - Tổng quan hoàn toàn
+│  ├─ Project summary
+│  ├─ Components
+│  ├─ Quick start
+│  ├─ Learning outcomes
+│  └─ Next steps
+│
+└─ 🎓 LAB_EXERCISE.sh - Bài tập học tập
+   └─ Các bài tập liên quan đến driver + encryption
 ```
 
 ---
 
-## 🎯 DOCUMENTATION BY PURPOSE
+## 🎯 Theo mục đích của bạn
 
-### 1️⃣ **I Want to Run It NOW**
-
-**👉 Read**: [QUICKSTART.txt](QUICKSTART.txt) (2 min)
+### 🏃 "Tôi muốn chạy ngay"
 
 ```
-Quick commands:
-  cd web
-  npm install
-  npm start
-  → http://localhost:3000
+👉 Đọc: QUICKSTART.md
+
+Các bước:
+1. make all              # Build driver + apps
+2. sudo insmod ...       # Load driver
+3. ./build/bin/file_manager  # Chạy
+```
+
+### 📚 "Tôi muốn hiểu cách hoạt động"
+
+```
+👉 Đọc: README.md + DEMO_GUIDE.md
+
+Bạn sẽ học:
+✓ Kernel driver AES-128-CBC
+✓ IOCTL interface
+✓ User-space ↔ Kernel communication
+✓ File encryption/decryption
+✓ Security analysis
+```
+
+### 🔍 "Tôi muốn biết chi tiết từng file"
+
+```
+👉 Đọc: PROJECT_STRUCTURE.md + INSTALL.md
+
+Chi tiết:
+✓ aes_driver.c - 320+ lines
+✓ file_manager.c - 520+ lines
+✓ Build system - Makefile
+✓ Data structures
+✓ Algorithms
+```
+
+### 🎓 "Tôi muốn học & thực hành"
+
+```
+👉 Đọc: LAB_EXERCISE.sh
+
+Bài tập:
+✓ Build driver
+✓ Encrypt/decrypt files
+✓ Performance testing
+✓ Security analysis
+✓ Bonus challenges
 ```
 
 ---
 
-### 2️⃣ **I Want a Full Demo**
+## 🔧 Các thành phần chính
 
-**👉 Read**: [DEMO_GUIDE.md](DEMO_GUIDE.md) (20 min)
+### 1️⃣ **Kernel Driver** (aes_driver.c)
 
-**Contains**:
-- Part 1: Starting server
-- Part 2: Web interface tour
-- Part 3-5: Demo scenarios
-- Part 6-9: Advanced usage
+```
+┌─────────────────────────────────────────────┐
+│          KERNEL SPACE                       │
+│  ┌──────────────────────────────────────┐  │
+│  │  AES-128-CBC Encryption              │  │
+│  │  - IOCTL handler                     │  │
+│  │  - Crypto API integration            │  │
+│  │  - Memory management                 │  │
+│  │  - Input validation                  │  │
+│  └──────────────────────────────────────┘  │
+└────────────────────────────────────────────┬─
+                                             │
+                            /dev/aes_engine  │
+                                             │
+┌────────────────────────────────────────────┴─
+│          USER SPACE                        │
+│  ┌──────────────────────────────────────┐  │
+│  │  User Applications                   │  │
+│  │  - file_manager.c                    │  │
+│  │  - Key management                    │  │
+│  │  - Buffer handling                   │  │
+│  │  - UI/Output                         │  │
+│  └──────────────────────────────────────┘  │
+└─────────────────────────────────────────────┘
+```
 
----
+### 2️⃣ **File Manager** (file_manager.c)
 
-### 3️⃣ **I Want to Use It on USB**
+```
+Menu Interface
+├── 1. Encrypt File
+├── 2. Decrypt File
+├── 3. List Files
+├── 4. File Info
+├── 5. Delete File
+└── 6. Help
+```
 
-**👉 Read**: [USB_DEPLOYMENT.md](USB_DEPLOYMENT.md) (15 min)
+### 3️⃣ **Build System** (Makefile + Kbuild)
 
-**Contains**:
-- USB preparation
-- Portable setup
-- Demo on USB
-- Troubleshooting USB issues
-
----
-
-### 4️⃣ **I'm Learning Encryption**
-
-**👉 Read**: [LAB_EXERCISE.sh](LAB_EXERCISE.sh) (30 min)
-
-**Contains**:
-- 10 parts with learning objectives
-- Security analysis
-- Performance metrics
-- Test cases
-- Bonus challenges
-
----
-
-### 5️⃣ **I Need Complete Details**
-
-**👉 Read**: [COMPLETE_OVERVIEW.md](COMPLETE_OVERVIEW.md) (10 min)
-
-**Contains**:
-- Project summary
-- What you can do now
-- All features
-- API reference
-- Security checklist
-
----
-
-### 6️⃣ **I Need EVERYTHING**
-
-**👉 Read**: [web/README.md](web/README.md) (Full)
-
-**Contains**:
-- Complete documentation
-- Every endpoint
-- Configuration options
-- Deployment strategies
-- Production tips
+```
+make all         → Build everything
+make driver      → Build kernel driver only
+make userspace   → Build user-space apps
+make install     → Install system-wide
+make clean       → Clean build files
+```
 
 ---
 
-## 🎯 QUICK REFERENCE
-
-### URLs
-
-| Purpose | URL |
-|---------|-----|
-| 🌐 Web Interface | http://localhost:3000 |
-| 🔐 Encrypt API | POST /api/process |
-| 💾 Download | GET /api/download/:id |
-| 📊 Statistics | GET /api/stats |
-| ❤️ Health Check | GET /api/health |
-
-### Commands
+## 🚀 Quick Commands
 
 ```bash
-# Start
-npm start
+# Build
+make all
 
-# Dev (with hot reload)
-npm run dev
+# Test
+./build/bin/file_manager
 
-# Check health
-curl http://localhost:3000/api/health
+# Install
+sudo make install
 
-# Get stats
-curl http://localhost:3000/api/stats
-```
+# Load driver
+sudo insmod build/bin/aes_driver.ko
 
-### Passwords to Try
+# Verify
+ls -la /dev/aes_engine
 
-```
-usb2026        ← Simple
-demo123        ← Demo password
-!@#$%^&*()     ← Special characters
-veryLongPassword123456  ← Long (14 chars)
-```
-
-### Test Files
-
-```
-Location: c:\Users\hoang\Downloads\
-
-secret_message.txt     ← Text file to encrypt
+# Run File Manager
+/opt/aes_secure/file_manager
 ```
 
 ---
 
-## 🗺️ DOCUMENTATION MAP
+## 🆘 Troubleshooting
 
-```
-START HERE
-    ↓
-QUICKSTART.txt (2 min)
-    ↓
-    ├─→ Want hands-on demo?
-    │   └─→ DEMO_GUIDE.md (20 min)
-    │       ├─→ Want USB version?
-    │       │   └─→ USB_DEPLOYMENT.md
-    │       └─→ Want to learn encryption?
-    │           └─→ LAB_EXERCISE.sh
-    │
-    ├─→ Want full overview?
-    │   └─→ COMPLETE_OVERVIEW.md (10 min)
-    │       └─→ Want ALL details?
-    │           └─→ web/README.md (Full)
-    │
-    └─→ Want configuration help?
-        └─→ web/CONFIG.md
-```
+| Problem | Solution |
+|---------|----------|
+| Build fails | Xem [INSTALL.md](INSTALL.md) - Build errors |
+| Driver not load | Xem [INSTALL.md](INSTALL.md) -  Device errors |
+| Permission denied | `sudo chmod 666 /dev/aes_engine` |
+| Cannot decrypt | Kiểm tra mật khẩu - phải chính xác |
+| USB not work | Xem [USB_DEPLOYMENT.md](USB_DEPLOYMENT.md) |
 
 ---
 
-## 🔍 SEARCH BY TOPIC
+## 📊 Project Statistics
 
-### Encryption & Security
-
-| Topic | Document | Section |
-|-------|----------|---------|
-| How AES works | COMPLETE_OVERVIEW.md | Encryption Details |
-| Password requirements | DEMO_GUIDE.md | Security Notes |
-| API security | web/CONFIG.md | Security Setup |
-| Production security | web/README.md | Deployment |
-
-### Usage & Testing
-
-| Topic | Document | Section |
-|-------|----------|---------|
-| First time setup | QUICKSTART.txt | All |
-| Web interface tour | DEMO_GUIDE.md | Part 2 |
-| File encryption | DEMO_GUIDE.md | Part 3-4 |
-| API testing | DEMO_GUIDE.md | Part 4 |
-| Performance | LAB_EXERCISE.sh | Part 6 |
-
-### Deployment
-
-| Topic | Document | Section |
-|-------|----------|---------|
-| USB setup | USB_DEPLOYMENT.md | Bước 1-2 |
-| Docker | web/README.md | Deployment |
-| Production | COMPLETE_OVERVIEW.md | Deployment |
-| Troubleshooting | USB_DEPLOYMENT.md | Phần 6 |
-
----
-
-## 💡 READING STRATEGIES
-
-### ⏱️ 5-Minute Quick Start
-1. Read: QUICKSTART.txt
-2. Run: `npm start`
-3. Open: http://localhost:3000
-4. Done! 🎉
-
-### 📘 30-Minute Learning
-1. Read: DEMO_GUIDE.md (all 10 parts)
-2. Run: Demo scenarios
-3. Test: All features
-4. Understand: How it works
-
-### 🔬 1-Hour Deep Dive
-1. Read: COMPLETE_OVERVIEW.md
-2. Study: server.js code
-3. Review: LAB_EXERCISE.sh
-4. Deploy: To USB or Docker
-
-### 📚 Complete Study
-1. Read: All markdown files
-2. Study: All source code (index.html, app.js, server.js)
-3. Understand: API endpoints
-4. Experiment: Modify & enhance
-
----
-
-## 🎯 LEARNING PATHS
-
-### Path A: Quick User
 ```
-QUICKSTART.txt → Use web interface → Done ✓
-Time: 5 min
-Outcome: Can encrypt/decrypt files
-```
+Code:
+├── aes_driver.c       ~320 lines (Kernel driver)
+├── file_manager.c     ~520 lines (File manager)
+├── aes_utils.c        ~300 lines (Utilities)
+├── Makefile           ~100 lines (Build)
+└── Total: ~1240 lines C code
 
-### Path B: Hands-on Learner
-```
-DEMO_GUIDE.md → Try all demos → LAB_EXERCISE.sh
-Time: 1 hour
-Outcome: Understand encryption + can use system
-```
+Documentation:
+├── README.md          ~400 lines
+├── INSTALL.md         ~300 lines
+├── DEMO_GUIDE.md      ~400 lines
+├── PROJECT_STRUCTURE  ~400 lines
+└── Total: ~1500+ lines
 
-### Path C: Developer
-```
-COMPLETE_OVERVIEW.md → web/README.md → Source code → Modify
-Time: 2-3 hours
-Outcome: Understand architecture, can customize
-```
-
-### Path D: DevOps Engineer
-```
-USB_DEPLOYMENT.md → Docker setup → Production deployment
-Time: 1-2 hours
-Outcome: Can deploy anywhere
+Features:
+✓ AES-128-CBC encryption
+✓ Kernel-space processing
+✓ CLI interfaces
+✓ USB management
+✓ Auto setup
+✓ Full documentation
+✓ Web interface (bonus)
 ```
 
 ---
 
-## 🆘 TROUBLESHOOTING
+## 🎓 Learning Outcomes
 
-### "Server won't start"
-→ See: QUICKSTART.txt → Problem 1-2
+Sau khi hoàn thành project, bạn sẽ hiểu:
 
-### "Web won't load"
-→ See: DEMO_GUIDE.md → Troubleshooting
+✅ **Kernel Driver Development**
+- Writing loadable kernel modules
+- IOCTL interface design
+- Memory management in kernel space
 
-### "Can't use on USB"
-→ See: USB_DEPLOYMENT.md → Phần 6
+✅ **Cryptography**
+- AES-128 algorithm
+- Block cipher modes (CBC)
+- PKCS7 padding
+- Key derivation
 
-### "Encryption fails"
-→ See: LAB_EXERCISE.sh → Test Cases
+✅ **System Programming**
+- User-space ↔ Kernel communication
+- Device driver architecture
+- Error handling
+- Performance optimization
 
-### "Want to modify code"
-→ See: web/CONFIG.md → Configuration
-
----
-
-## 📋 DOCUMENT CHECKLIST
-
-### Have You Read?
-
-- [ ] QUICKSTART.txt - Quick reference
-- [ ] DEMO_GUIDE.md - Full demo
-- [ ] USB_DEPLOYMENT.md - Portable use
-- [ ] LAB_EXERCISE.sh - Learning
-- [ ] COMPLETE_OVERVIEW.md - Overview
-- [ ] web/README.md - Full details
-- [ ] web/CONFIG.md - Customization
+✅ **Linux Development**
+- Makefile & kbuild
+- Module compilation
+- Device node creation
+- Kernel APIs
 
 ---
 
-## 🎓 AFTER YOU FINISH
+## 📞 Hỗ trợ
 
-### Next Challenge: Enhance It!
-
-1. **Add 256-bit AES**
-   - File: server.js
-   - Change: AES-128-CBC → AES-256-CBC
-   - Time: 5 min
-
-2. **Enable HTTPS**
-   - File: server.js
-   - Add: SSL certificate
-   - Time: 15 min
-
-3. **Add rate limiting**
-   - Install: express-rate-limit
-   - Add middleware
-   - Time: 10 min
-
-4. **Deploy to cloud**
-   - Use: Heroku, AWS, or Azure
-   - Follow: Deployment guide
-   - Time: 30 min
-
-5. **Create mobile app**
-   - Use: React Native
-   - API: Same endpoints
-   - Time: 2-3 hours
+| Câu hỏi | Đáp án |
+|--------|--------|
+| Làm sao bắt đầu? | [QUICKSTART.md](QUICKSTART.md) |
+| Cách cài đặt? | [INSTALL.md](INSTALL.md) |
+| Làm sao sử dụng? | [DEMO_GUIDE.md](DEMO_GUIDE.md) |
+| Chi tiết cấu trúc? | [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) |
+| Gặp lỗi gì? | [Troubleshooting](INSTALL.md) |
 
 ---
 
-## 📞 FREQUENTLY ASKED QUESTIONS
-
-### Q: How do I start?
-**A**: Read QUICKSTART.txt (2 min), then run `npm start`
-
-### Q: How do I use on USB?
-**A**: Read USB_DEPLOYMENT.md
-
-### Q: Is it secure?
-**A**: Yes! AES-128-CBC is military-grade. Details: COMPLETE_OVERVIEW.md
-
-### Q: Can I modify the code?
-**A**: Yes! See web/CONFIG.md for configuration options
-
-### Q: How do I deploy to production?
-**A**: See web/README.md → Deployment section
-
-### Q: What if I forgot my password?
-**A**: Unfortunately, no recovery. Encryption works correctly. Use strong passwords!
-
----
-
-## 📊 STATISTICS
-
-```
-Documentation Pages:      7
-Total Documentation:      ~50 KB
-Code Files:              5 main files
-Total Code:              ~2,500 lines
-Setup Time:              2 minutes
-Learning Time:           30 minutes
-Deployment Time:         5 minutes
-```
-
----
-
-## ✅ FINAL CHECKLIST
-
-Before you proceed:
-
-- [x] Read index file (you're doing it!)
-- [x] Understand folder structure
-- [x] Know where to find answers
-- [ ] **Next**: Pick your path above
-- [ ] Read appropriate documentation
-- [ ] Run the system
-- [ ] Test features
-- [ ] Customize if needed
-- [ ] Deploy wherever needed
-
----
-
-## 🚀 YOU'RE READY!
-
-### Start With:
-
-**Option 1: Super Quick**
-→ [QUICKSTART.txt](QUICKSTART.txt)
-
-**Option 2: Full Demo**
-→ [DEMO_GUIDE.md](DEMO_GUIDE.md)
-
-**Option 3: USB Setup**
-→ [USB_DEPLOYMENT.md](USB_DEPLOYMENT.md)
-
-**Option 4: Everything**
-→ [COMPLETE_OVERVIEW.md](COMPLETE_OVERVIEW.md)
-
----
-
-**🔒 Now go encrypt something! 🚀**
-
----
-
-*Last Updated: 2026-03-25*
-*Status: ✅ All Systems Go*
-*Support: See appropriate documentation above*
+**🔒 AES File Encryption with Kernel Driver**  
+**Status**: ✅ Ready for Learning & Production  
+**Version**: 1.0

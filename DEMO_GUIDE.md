@@ -208,44 +208,7 @@ curl http://localhost:3000/api/stats
 
 ---
 
-## 🎯 PHẦN 5: SỬ DỤNG TRÊN USB
-
-### Cách 1: Copy toàn bộ lên USB
-
-```bash
-# Copy project lên USB E:\
-robocopy "c:\Users\hoang\Downloads\AES_Ubuntu\web" E:\AES_Encryption /E /EXCLUDE:node_modules uploads
-
-# Sau đó:
-cd E:\AES_Encryption
-npm install
-npm start
-```
-
-### Cách 2: Chỉ copy files cần thiết
-
-```
-USB:/
-├── index.html
-├── app.js
-├── style.css
-├── server.js
-├── package.json
-└── start.bat
-
-# Double-click start.bat để chạy
-```
-
-### Cách 3: Dùng Docker (nếu có)
-
-```bash
-docker build -t aes-encryption .
-docker run -p 3000:3000 aes-encryption
-```
-
----
-
-## ⚙️ PHẦN 6: TROUBLESHOOTING
+## ⚙️ PHẦN 5: TROUBLESHOOTING
 
 ### Problem 1: Port 3000 đã được dùng
 
@@ -281,7 +244,7 @@ npm start
 
 ---
 
-## 📊 PHẦN 7: HIỆU NĂNG
+## 📊 PHẦN 6: HIỆU NĂNG
 
 ### Tốc độ Encryption
 
@@ -302,7 +265,7 @@ npm start
 
 ---
 
-## 🔐 PHẦN 8: SECURITY NOTES
+## 🔐 PHẦN 7: SECURITY NOTES
 
 ✅ **Mạnh**:
 - AES-128 (quốc tế chuẩn)

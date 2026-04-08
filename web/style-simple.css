@@ -1,0 +1,519 @@
+/* ==================== RESET & BASE ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 650px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: 1px;
+}
+
+.header p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* ==================== STATUS BAR ==================== */
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #dc3545;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+}
+
+.status-indicator.connected {
+    background-color: #28a745;
+    animation: none;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.status-text {
+    font-size: 0.95rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.status-text.connected {
+    color: #28a745;
+    font-weight: 600;
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* ==================== SECTIONS ==================== */
+.section {
+    margin-bottom: 1.5rem;
+}
+
+.section:last-of-type {
+    margin-bottom: 1rem;
+}
+
+.section-label {
+    display: block;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: none;
+}
+
+/* ==================== INPUT GROUPS ==================== */
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.path-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    color: #495057;
+    font-family: 'Segoe UI', monospace;
+    transition: all 0.3s ease;
+    min-width: 250px;
+}
+
+.path-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: #f8f9ff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    flex-shrink: 0;
+}
+
+.btn-secondary:hover {
+    background-color: #e9ecef;
+    color: #212529;
+    border-color: #adb5bd;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-large {
+    padding: 0.85rem 2.5rem;
+    font-size: 1rem;
+    min-width: 180px;
+    font-weight: 600;
+}
+
+/* ==================== PASSWORD GROUP ==================== */
+.password-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.password-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    color: #495057;
+    transition: all 0.3s ease;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: #f8f9ff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn-toggle-password {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.btn-toggle-password:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+/* ==================== ACTIONS ==================== */
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 550px) {
+    .actions {
+        flex-direction: column;
+    }
+
+    .btn-large {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+/* ==================== PROGRESS ==================== */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #495057;
+    font-weight: 600;
+}
+
+/* ==================== MESSAGE BOX ==================== */
+.message-box {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+    background-color: #f0f4ff;
+    color: #495057;
+}
+
+.message-box.success {
+    border-left-color: #28a745;
+    background-color: #f0f8f4;
+}
+
+.message-box.success #messageText {
+    color: #28a745;
+}
+
+.message-box.error {
+    border-left-color: #dc3545;
+    background-color: #fdf8f8;
+}
+
+.message-box.error #messageText {
+    color: #dc3545;
+}
+
+.message-box.warning {
+    border-left-color: #ffc107;
+    background-color: #fffbf0;
+}
+
+.message-box.warning #messageText {
+    color: #ff8c00;
+}
+
+#messageText {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    padding: 1.5rem 2rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* ==================== SCROLLBAR ==================== */
+.main-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 480px) {
+    .header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    .section {
+        margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+        flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+        flex: 1 1 calc(50% - 0.375rem);
+        min-width: 100px;
+    }
+
+    .btn-secondary:nth-child(3) {
+        flex: 1 1 100%;
+    }
+
+    .status-bar {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .footer {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* ==================== DARK MODE SUPPORT ==================== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+
+    .container {
+        background: #2d2d2d;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .status-bar {
+        background-color: #363636;
+        border-bottom-color: #454545;
+    }
+
+    .status-text {
+        color: #b0b0b0;
+    }
+
+    .section-label {
+        color: #e0e0e0;
+    }
+
+    .path-input,
+    .password-input {
+        background-color: #363636;
+        color: #e0e0e0;
+        border-color: #454545;
+    }
+
+    .path-input:focus,
+    .password-input:focus {
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+
+    .btn-secondary {
+        background-color: #454545;
+        color: #b0b0b0;
+        border-color: #565656;
+    }
+
+    .btn-secondary:hover {
+        background-color: #565656;
+        color: #e0e0e0;
+    }
+
+    .progress-bar {
+        background-color: #454545;
+    }
+
+    .message-box {
+        background-color: rgba(102, 126, 234, 0.1);
+        color: #b0b0b0;
+    }
+
+    .message-box.success {
+        background-color: rgba(40, 167, 69, 0.1);
+    }
+
+    .message-box.success #messageText {
+        color: #52c41a;
+    }
+
+    .message-box.error {
+        background-color: rgba(220, 53, 69, 0.1);
+    }
+
+    .message-box.error #messageText {
+        color: #f5222d;
+    }
+
+    .footer {
+        background-color: #363636;
+        border-top-color: #454545;
+        color: #888;
+    }
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-box {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+    body {
+        background: white;
+    }
+
+    .btn {
+        display: none;
+    }
+}
